@@ -17,6 +17,7 @@ mv cbmbasic ..
 
 Next, we'll combine the runtime and the interpreter in a zipfile, and upload to S3. 
 ```sh
+cd ..
 zip runtime.zip cbmbasic bootstrap
 aws s3 cp runtime.zip s3://[your-bicket]
 ```
