@@ -1,3 +1,4 @@
+1 REM This is an example handler that can be used as an ALB target
 10 PRINT "{"
 20 PRINT "  ";CHR$(34);"statusCode";CHR$(34);": 200,"
 30 PRINT "  ";CHR$(34);"statusDescription";CHR$(34);": ";CHR$(34);"200 OK";CHR$(34);","
@@ -8,6 +9,7 @@
 80 PRINT CHR$(59);" charset=utf-8";CHR$(34)
 90 PRINT "  },"
 100 PRINT "  ";CHR$(34);"body";CHR$(34);": ";
+105 REM The actual HTML goes here
 110 PRINT CHR$(34);"<html><head><title>Hello World!</title>";
 120 PRINT "<style>html, body {margin: 0; padding: 0;text-align: center;}</style>";
 130 PRINT "</head><body><br><pre>";
