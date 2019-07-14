@@ -27,7 +27,9 @@ The handler function should also be zipped to create the Lambda function from it
 zip handler.zip handler.bas
 aws lambda create-function --function-name c64-web-template --zip-file fileb://handler.zip --handler handler.bas --runtime provided --role arn:aws:iam::123456789012:role/your-role-ARN-here
 ```
+Resulting in this:
 
+![Success](https://nicolai-public.s3-eu-west-1.amazonaws.com/images/2BC6D4E6-B61A-4E8A-9C2E-B76B07FED283.png)
 ## Performance
 
 Performance of the basic interpreter is actually pretty good, given it's rather small footprint the startup time is neglible compared to even Python:
