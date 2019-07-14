@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+#
+# This script is for performance testing, it does something similar as the example C64 Basic handler
 
 print('{')
 print('  "statusCode": 200,')
