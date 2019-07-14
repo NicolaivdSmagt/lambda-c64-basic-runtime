@@ -35,12 +35,12 @@ Resulting in this:
 Performance of the basic interpreter is actually pretty good, given it's rather small footprint the startup time is neglible compared to even Python:
 
 ```sh
-[nicolai@bastion lambda-c64-basic-runtime]$ time python2 handler.py 1> /dev/null
+[nicolai@bastion lambda-c64-basic-runtime]$ time python2 perf-test.py 1> /dev/null
 
 real    0m0.012s
 user    0m0.010s
 sys     0m0.000s
-[nicolai@bastion lambda-c64-basic-runtime]$ time python3 handler.py 1> /dev/null
+[nicolai@bastion lambda-c64-basic-runtime]$ time python3 perf-test.py 1> /dev/null
 
 real    0m0.015s
 user    0m0.009s
