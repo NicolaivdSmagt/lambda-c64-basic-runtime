@@ -25,7 +25,7 @@ aws lambda publish-layer-version --layer-name c64-runtime --zip-file fileb://run
 The handler function should also be zipped to create the Lambda function from it. The included example can be fronted by an ALB to provide a fully serverless, dynamic webpage in C64 basic..
 ```sh
 zip handler.zip handler.bas
-aws lambda create-function --function-name c64-web-template --zip-file fileb://handler.zip --handler handler.bas --runtime provided --role arn:aws:iam::123456789012:role/your-role-ARN-here
+aws lambda create-function --function-name c64-web-template --zip-file fileb://handler.zip --handler handler.bas --runtime provided --role arn:aws:iam::123456789012:role/your-role-ARN-here --layers
 ```
 Resulting in this:
 
@@ -51,6 +51,4 @@ real    0m0.001s
 user    0m0.001s
 sys     0m0.000s
 ```
-However, running as Lambda runtime things change a bit. Python is a builtin runtime for Lambda, supported by AWS. Since our runtime is bootstrapped from a bash script, we add some additional startup latency:
-
-TO BE COMPLETED
+However, running as Lambda runtime things change a bit. Python is a builtin runtime for Lambda, supported by AWS. Since our runtime is bootstrapped from a bash script, we add some additional startup latency. A warmed-up C64 Basic Lambda function completes in about 300ms, while a warmed-up Python function runs in as little as 1ms.
