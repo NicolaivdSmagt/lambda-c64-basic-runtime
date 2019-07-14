@@ -53,4 +53,4 @@ real    0m0.001s
 user    0m0.001s
 sys     0m0.000s
 ```
-However, running as Lambda runtime things change a bit. Python is a builtin runtime for Lambda, supported by AWS. Since our runtime is bootstrapped from a bash script, we add some additional startup latency. A warmed-up C64 Basic Lambda function completes in about 300ms, while a warmed-up Python function runs in as little as 1ms.
+However, running as Lambda runtime things change a bit. Python is a builtin runtime for Lambda, supported by AWS. Since our custom C64 Basic runtime is bootstrapped from a bash script, we incur some additional startup latency. A warmed-up C64 Basic Lambda function completes in about 300ms, while a warmed-up Python function runs in as little as 1ms.
