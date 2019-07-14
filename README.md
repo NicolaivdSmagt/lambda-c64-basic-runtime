@@ -14,14 +14,14 @@ cd cbmbasic
 make
 mv cbmbasic ..
 ```
-
+## Creating Lambda layer
 Next, we'll combine the runtime and the interpreter in a zipfile, and create the Lambda layer from it.
 ```sh
 cd ..
 zip runtime.zip cbmbasic bootstrap
 aws lambda publish-layer-version --layer-name c64-runtime --zip-file fileb://runtime.zip
 ```
-
+## Creating the handler function
 The handler function should also be zipped to create the Lambda function from it. The included example can be fronted by an ALB to provide a fully serverless, dynamic webpage in C64 basic..
 ```sh
 zip handler.zip handler.bas
