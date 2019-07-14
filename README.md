@@ -15,12 +15,19 @@ make
 mv cbmbasic ..
 ```
 
-Next, we'll combine the runtime and the interpreter in a zipfile, and upload to S3. 
+Next, we'll combine the runtime and the interpreter in a zipfile, and create the Lambda layer from it.
 ```sh
 cd ..
 zip runtime.zip cbmbasic bootstrap
-aws s3 cp runtime.zip s3://[your-bucket]
+aws lambda publish-layer-version --layer-name c64-runtime --zip-file fileb://runtime.zip
 ```
+
+The handler function should also be zipped to create the Lambda function from it. The included example can be fronted by an ALB to provide a fully serverless, dynamic webpage in C64 basic..
+```sh
+zip handler.zip handler.bas
+aws lambda create-function --function-name c64-web-template --zip-file fileb://handler.zip --handler handler.bas --runtime provided --role arn:aws:iam::123456789012:role/your-role-ARN-here
+```
+
 ## Performance
 
 Performance of the basic interpreter is actually pretty good, given it's rather small footprint the startup time is neglible compared to even Python:
@@ -42,6 +49,6 @@ real    0m0.001s
 user    0m0.001s
 sys     0m0.000s
 ```
-However, running as Lambda runtime things change a bit. Python is a builtin runtime for Lambda, supported by AWS. while we bootstrap our runtime with a bash script, sure to delay things a bit:
+However, running as Lambda runtime things change a bit. Python is a builtin runtime for Lambda, supported by AWS. Since our runtime is bootstrapped from a bash script, we add some additional startup latency:
 
 TO BE COMPLETED
