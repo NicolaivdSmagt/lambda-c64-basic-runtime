@@ -1,6 +1,8 @@
-# lambda-c64-basic-runtime
-A [custom runtime](https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers/)
-for AWS Lambda to execute functions in Commodore 64 Basic V2.
+# Custom Commodore 64 Basic V2 runtime for AWS Lambda
+![C64](http://nicolai-public.s3.amazonaws.com/c64.jpg)<br>
+I used to have fun manually copying Commodore Basic listings from magazines into my machine for hours on end, only to find out I didn't like the resulting game that much.
+It's been a while since I created my last piece of C64 Basic code, but I still figured it made sense to have a Commodore 64 Basic V2 interpreter in AWS Lambda for those people looking to port their C64 code to serverless microservices. So, here is a [custom runtime](https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers/)
+for AWS Lambda to execute functions in Commodore 64 Basic V2. 
 
 ## Building the binary
 
@@ -22,10 +24,10 @@ zip runtime.zip cbmbasic bootstrap
 aws lambda publish-layer-version --layer-name c64-runtime --zip-file fileb://runtime.zip
 ```
 ## Creating the handler function
-The handler function should also be zipped to create the Lambda function from it. The included example can be fronted by an ALB to provide a fully serverless, dynamic webpage in C64 basic..
+The handler function should also be zipped to create the Lambda function from it. Use an existing IAM role for your function or create a new one, and provide the ARN of the layer created in the previous step. The included example can be fronted by an ALB to provide a fully serverless, dynamic webpage in C64 basic..
 ```sh
 zip handler.zip handler.bas
-aws lambda create-function --function-name c64-web-template --zip-file fileb://handler.zip --handler handler.bas --runtime provided --role arn:aws:iam::123456789012:role/your-role-ARN-here --layers
+aws lambda create-function --function-name c64-web-template --zip-file fileb://handler.zip --handler handler.bas --runtime provided --role arn:aws:iam::123456789012:role/your-role-ARN-here --layers arn:aws:lambda:eu-west-1:123456789012:layer:c64-runtime:1
 ```
 Resulting in this:
 
