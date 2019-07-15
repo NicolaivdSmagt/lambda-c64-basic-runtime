@@ -1,3 +1,8 @@
+<meta property='og:title' content='title'/>
+<meta property='og:image' content='image/path'/>
+<meta property='og:description' content='description'/>
+<meta property='og:url' content='http://nicolai-public.s3.amazonaws.com/c64.jpg'/>
+
 # Custom Commodore 64 Basic V2 runtime for AWS Lambda
 ![C64](http://nicolai-public.s3.amazonaws.com/c64.jpg)<br>
 I used to have fun manually copying Commodore Basic listings from magazines into my machine for hours on end, only to find out I didn't like the resulting game that much.
