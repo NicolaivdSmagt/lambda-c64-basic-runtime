@@ -1,4 +1,4 @@
-1 REM This is an example handler that can be used as an ALB target
+1 REM This is an example Lambda handler that can be used as an ALB target
 10 PRINT "{"
 20 PRINT "  ";CHR$(34);"statusCode";CHR$(34);": 200,"
 30 PRINT "  ";CHR$(34);"statusDescription";CHR$(34);": ";CHR$(34);"200 OK";CHR$(34);","
