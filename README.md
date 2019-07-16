@@ -24,7 +24,7 @@ zip runtime.zip cbmbasic bootstrap
 aws lambda publish-layer-version --layer-name c64-runtime --zip-file fileb://runtime.zip
 ```
 ## Creating the handler function
-The handler function should also be zipped to create the Lambda function from it. Use an existing IAM role for your function or create a new one, and provide the ARN of the layer created in the previous step. The included example can be fronted by an ALB to provide a fully serverless, dynamic webpage in C64 basic..
+The handler function should also be zipped to create the Lambda function from it. Use an existing IAM role for your function or create a new one, and provide the ARN of the layer created in the previous step. The [included example](https://github.com/NicolaivdSmagt/lambda-c64-basic-runtime/blob/master/handler.bas) can be fronted by an ALB to provide a fully serverless, dynamic webpage in C64 basic..
 ```sh
 zip handler.zip handler.bas
 aws lambda create-function --function-name c64-web-template --zip-file fileb://handler.zip --handler handler.bas --runtime provided --role arn:aws:iam::123456789012:role/your-role-ARN-here --layers arn:aws:lambda:eu-west-1:123456789012:layer:c64-runtime:1
