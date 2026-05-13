@@ -1,5 +1,5 @@
 # Custom Commodore 64 Basic V2 runtime for AWS Lambda
-![C64](http://nicolai-public.s3.amazonaws.com/c64.jpg)<br>
+![C64](images/c64_prompt.jpeg)<br>
 I used to have fun manually copying Commodore Basic listings from magazines into my machine for hours on end, only to find out I didn't like the resulting game that much.
 It's been a while since I created my last piece of C64 Basic code, but I still figured it made sense to have a Commodore 64 Basic V2 interpreter in AWS Lambda for those people looking to port their C64 code to serverless microservices. So, here is a [custom runtime](https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers/)
 for AWS Lambda to execute functions in Commodore 64 Basic V2. 
@@ -31,7 +31,7 @@ aws lambda create-function --function-name c64-web-template --zip-file fileb://h
 ```
 Resulting in this:
 
-![Success](https://nicolai-public.s3-eu-west-1.amazonaws.com/images/2BC6D4E6-B61A-4E8A-9C2E-B76B07FED283.png)
+![Success](images/c64_demo.png)
 ## Performance
 
 Performance of the basic interpreter is actually pretty good, given it's rather small footprint the startup time is neglible compared to even Python:
